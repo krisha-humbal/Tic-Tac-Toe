@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Tint&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+    <style>
+        .box {
+            width: 100%;
+            /* height: 100vh; */
+            background-color: rgb(29, 5, 5);
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .sub-box {
+
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: black;
+            box-shadow: 0 0 5px 0px rgb(49, 48, 48);
+            position: relative;
+            top:-80px
+
+        }
+
+        .sub-box button {
+            height: 100px;
+            width: 100px;
+            background-color: black;
+            cursor: pointer;
+            font-family: "Bungee Tint", sans-serif;
+
+            font-weight: 1000;
+            font-size: 50px;
+        }
+
+        .resetBtn {
+            width: 150px;
+            margin-top: 50px;
+            /* padding: 20px; */
+            background-color: black;
+            color: white;
+            border-radius: 20px;
+            box-shadow: 2px 2px 5px rgb(41, 39, 39);
+            cursor: pointer;
+            font-family: "Bungee Spice", sans-serif;
+            font-size: 30px;
+            position: relative;
+            margin: auto;
+            top: -30px;
+        }
+
+        #titleTop {
+            font-family: "Bungee Spice", sans-serif;
+            font-weight: 400;
+            font-size: 80px;
+        }
+
+        #tie {
+            font-family: "Bungee Spice", sans-serif;
+            font-weight: 400;
+            font-size: 50px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box">
+        <h1 id="titleTop">Tic Tak To</h1>
+        <h2 id="tie"></h2>
+        <div class="sub-box" id="bx">
+            <button id="btn1"  class="btn"></button>
+            <button id="btn2"  class="btn"></button>
+            <button id="btn3"  class="btn"></button>
+            <button id="btn4"  class="btn"></button>
+            <button id="btn5"  class="btn"></button>
+            <button id="btn6"  class="btn"></button>
+            <button id="btn7"  class="btn"></button>
+            <button id="btn8"  class="btn"></button>
+            <button id="btn9"  class="btn"></button>
+
+        </div>
+        <button class="resetBtn" onclick="location.reload()">Reset</button>
+    </div>
+
+    <script>
+
+        let turn = "X"
+        let buttons=document.querySelectorAll('.btn')
+        let winnershow=document.getElementById('titleTop')
+        buttons.forEach((el,i)=>{
+                el.addEventListener("click",()=>buttonPress(el))
+        })
+        let title=document.getElementById('tie')
+
+        function win(b1, b2, b3)
+         {
+            if (b1.innerHTML != "" && b2.innerHTML != "" && b3.innerHTML != "") {
+                if (b1.innerHTML == b2.innerHTML && b2.innerHTML == b3.innerHTML) {
+                    document.getElementById('titleTop').innerHTML = "Winner " + b1.innerHTML
+                    document.getElementById('titleTop').style.display = "block"
+                    document.getElementById('tie').style.display = "none"
+                
+                    btn4.disabled=true
+                    btn5.disabled= true
+                    btn6.disabled= true
+                    btn7.disabled= true
+                    btn8.disabled= true
+                    btn9.disabled= true
+
+                    setTimeout(() => {
+                location.reload()
+             }, 4000);
+                }
+            }
+            checkTie()
+
+        }
+        function checkTie() {
+            if(btn1.innerHTML!="" && btn2.innerHTML!=""&& btn3.innerHTML!="" && btn4.innerHTML!="" && btn5.innerHTML!=""&& btn6.innerHTML!=""&& btn7.innerHTML!=""&& btn8.innerHTML!=""&& btn9.innerHTML!="" && title.innerHTML ==""){
+                title.innerHTML="Tie"
+                setTimeout(() => {
+                location.reload()
+             }, 4000);
+            }   
+            
+        }
+        
+        function buttonPress(btn) {
+
+            if (btn.innerHTML == "") {
+                turn = turn == "X" ? "O" : "X"
+                btn.innerHTML = turn
+
+            }
+            console.log(turn);
+            win(btn1, btn2, btn3)
+            win(btn4, btn5, btn6)
+            win(btn7, btn8, btn9)
+            win(btn1, btn5, btn9)
+            win(btn3, btn5, btn7)
+            win(btn1, btn4, btn7)
+            win(btn2, btn5, btn8)
+            win(btn3, btn6, btn9)
+
+        }
+
+       
+
+    </script>
+</body>
+
+</html>
