@@ -21,29 +21,27 @@
             /* justify-content: center; */
             align-items: center;
             flex-direction: column;
-            position: relative;
+            /* position: relative; */
         }
 
         .sub-box {
 
-            width: 300px;
-            height: 300px;
+            width: 280px;
+            height: 280px;
             display: flex;
             flex-wrap: wrap;
             background-color: black;
             box-shadow: 0 0 5px 0px rgb(49, 48, 48);
             position: relative;
-            top:-80px
-
+            top: -50px;
         }
 
         .sub-box button {
-            height: 100px;
-            width: 100px;
+            height: 90px;
+            width: 90px;
             background-color: black;
             cursor: pointer;
             font-family: "Bungee Tint", sans-serif;
-
             font-weight: 1000;
             font-size: 50px;
         }
@@ -60,14 +58,14 @@
             font-family: "Bungee Spice", sans-serif;
             font-size: 30px;
             position: relative;
-            margin: auto;
-            top: -30px;
+            top: -50px;
+            
         }
 
         #titleTop {
             font-family: "Bungee Spice", sans-serif;
             font-weight: 400;
-            font-size: 80px;
+            font-size: 50px;
         }
 
         #tie {
@@ -83,7 +81,7 @@
 <body>
 
     <div class="box">
-        <h1 id="titleTop">Tic Tak To</h1>
+        <h1 id="titleTop">Tic Tac Toe</h1>
         <h2 id="tie"></h2>
         <div class="sub-box" id="bx">
             <button id="btn1"  class="btn"></button>
@@ -135,7 +133,7 @@
         }
         function checkTie() {
             if(btn1.innerHTML!="" && btn2.innerHTML!=""&& btn3.innerHTML!="" && btn4.innerHTML!="" && btn5.innerHTML!=""&& btn6.innerHTML!=""&& btn7.innerHTML!=""&& btn8.innerHTML!=""&& btn9.innerHTML!="" && title.innerHTML ==""){
-                title.innerHTML="Tie"
+                titleTop.innerHTML="Tie"
                 setTimeout(() => {
                 location.reload()
              }, 4000);
